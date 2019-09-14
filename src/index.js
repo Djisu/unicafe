@@ -6,12 +6,7 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  let [total, setTotal]= useState(0)
- 
-  const setValueTotal = (props) => {
-    return setTotal(props.good + props.neutral + props.bad)
-  }
-
+  
   return (
     <div>
       {/* code here */}
@@ -28,6 +23,7 @@ const App = () => {
         Neutral <span>{neutral}</span><br />
         Bad <span>{bad}</span><br />
         all <span>{good + bad + neutral}</span><br />
+        average  <span>{((good * 1) + (bad * -1) + (neutral * 0))/(good + bad + neutral)}</span><br />
       </p>
 
     </div>
