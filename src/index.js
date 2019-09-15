@@ -3,21 +3,26 @@ import ReactDOM from 'react-dom'
 
   // do not define a component within another component
   const Statistics = (props) => {
-    return (
-        <div>
-            <strong>statistics</strong><br />
-            Good <span>{props.good}</span><br />
-            Neutral <span>{props.neutral}</span><br />
-            Bad <span>{props.bad}</span><br />
-            all <span>{props.good + props.bad + props.neutral}</span><br />
-            average  <span>{((props.good * 1) + (props.bad * -1) + (props.neutral * 0))/(props.good + props.bad + props.neutral)}</span><br />
-            positive  <span>{(props.good/(props.good + props.bad + props.neutral)) * 100} %</span><br /> 
-        </div>
-     )
+    if (props.good > 0 || props.neutral > 0 || props.bad > 0) {
+        return (
+            <div>
+                <strong>statistics</strong><br />
+                Good <span>{props.good}</span><br />
+                Neutral <span>{props.neutral}</span><br />
+                Bad <span>{props.bad}</span><br />
+                all <span>{props.good + props.bad + props.neutral}</span><br />
+                average  <span>{((props.good * 1) + (props.bad * -1) + (props.neutral * 0))/(props.good + props.bad + props.neutral)}</span><br />
+                positive  <span>{(props.good/(props.good + props.bad + props.neutral)) * 100} %</span><br /> 
+            </div>
+        )
+    } else {
+        return (<p> No feedback given</p>)   
+    }
+  
   }
 
 const App = () => {
-  // save clicks of each button to own state
+  // Calling hooks
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
