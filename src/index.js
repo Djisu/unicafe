@@ -21,6 +21,12 @@ import ReactDOM from 'react-dom'
   
   }
 
+  const Button = ({ onClick, text }) => (
+    <button onClick={onClick}>
+      {text}
+    </button>
+  )
+
 const App = () => {
   // Calling hooks
   const [good, setGood] = useState(0)
@@ -41,12 +47,15 @@ const App = () => {
 
   return (
     <div>
-      {/* code here */}
       <p><strong>give feedback</strong></p><br />
 
-      <button onClick={handleGoodClick}>Good</button>
+      {/* <button onClick={handleGoodClick}>Good</button>
       <button onClick={handleNeutralClick}>Neutral</button>
-      <button onClick={handleBadClick}>Bad</button>
+      <button onClick={handleBadClick}>Bad</button> */}
+
+      <Button onClick={handleGoodClick} text='Good' />
+      <Button onClick={handleNeutralClick} text='Neutral' /> 
+      <Button onClick={handleBadClick} text='Bad' /> 
 
       <Statistics good={good} neutral={neutral} bad={bad} />
 
